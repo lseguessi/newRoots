@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, TitleContainer, UserScroll, UsersContent } from "./styles";
-import { TailSpin } from "react-loader-spinner";
+import { Container, TitleContainer, UsersContent } from "./styles";
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 export default function Card({ profiles, handleIdUser, loading }: any) {
-  console.log(loading);
 
   const UsersSort = profiles.sort((a: any, b: any) => {
     return b.balance.points - a.balance.points;
@@ -17,14 +16,14 @@ export default function Card({ profiles, handleIdUser, loading }: any) {
         <p>Points</p>
       </TitleContainer>
 
-      <UserScroll>
+      <ScrollContainer className="scroll-container" vertical hideScrollbars={false}>
         {UsersSort.map((profile: any, index: number) => {
           return (
             <UsersContent
               key={profile.id}
               onClick={() => handleIdUser(profile.id)}
             >
-              <p>{index}</p>
+              <p>{index + 1}</p>
               <div>
                 <img
                   src={
@@ -42,7 +41,7 @@ export default function Card({ profiles, handleIdUser, loading }: any) {
             </UsersContent>
           );
         })}
-      </UserScroll>
+      </ScrollContainer>
     </Container>
   );
 }

@@ -6,9 +6,30 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
-  border-radius: 8px;
   z-index: 1;
-  opacity: ${(props) => (props.visible === "show" ? 1 : 0)};
+  display: ${(props) => (props.visible === "show" ? "hidden" : "initial")};
+
+  .scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-button {
+      height: 0;
+    }
+    ::-webkit-scrollbar-track-piece {
+      background: #fafbfd;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d7dbe7;
+      border-radius: 10px;
+    }
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -40,28 +61,6 @@ export const TitleContainer = styled.div`
   }
 `;
 
-export const ActivityScroll = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 80%;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-button {
-    height: 0;
-  }
-  ::-webkit-scrollbar-track-piece {
-    background: #fafbfd;
-    border-radius: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #d7dbe7;
-    border-radius: 10px;
-  }
-`;
-
 export const ActivityContainer = styled.div`
   max-width: 282px;
   width: 100%;
@@ -75,11 +74,11 @@ export const ActivityContainer = styled.div`
   border-bottom: 1px solid #d7dbe7;
 
   margin: 0 auto;
-  padding: 12px 0;
+  padding-top: 12px;
 
   :first-child {
-      margin-top: 12px;
-  };
+    margin-top: 12px;
+  }
 `;
 
 export const Activity = styled.div`
@@ -96,6 +95,7 @@ export const Activity = styled.div`
     width: 16px;
     height: 16px;
     margin-right: 12px;
+    margin-left: 10px;
   }
 
   .activities {

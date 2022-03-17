@@ -37,6 +37,7 @@ export const Wrappper = styled.div`
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
 
     gap: 22px;
 `;

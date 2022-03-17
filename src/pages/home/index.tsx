@@ -68,7 +68,7 @@ export default function Home({ token, users }) {
       setUser({
         dataActivities: dataActivities.data,
         dataProgramLevels: dataProgramLevels.data,
-        dataProgramaFormated: dataProgram.data,
+        dataProgramFormated: dataProgram.data,
         dataLevelFormated: dataLevel.data,
         ...dataUser.data,
       });
@@ -90,12 +90,13 @@ export default function Home({ token, users }) {
         </Logo>
         <Card loading={loading} profiles={users} handleIdUser={handleIdUser} />
         {visibility === "show" ? (
-          <CardInfoUser profile={user} visibility={visibility} />
+          <>
+            <CardInfoUser profile={user} visibility={visibility} />
+            <CardActivityUser userActivities={user} visibility={visibility} />
+          </>
         ) : (
           <></>
         )}
-
-        <CardActivityUser dataUser={user} visibility={visibility} />
       </Wrappper>
       <BgImage />
     </>

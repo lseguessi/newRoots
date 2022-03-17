@@ -8,6 +8,28 @@ export const Container = styled.div`
   background: #fff;
   border-radius: 8px;
   z-index: 1;
+
+  .scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-button {
+      height: 0;
+    }
+    ::-webkit-scrollbar-track-piece {
+      background: #fafbfd;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d7dbe7;
+      border-radius: 10px;
+    }
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -36,28 +58,6 @@ export const TitleContainer = styled.div`
 
   p:nth-child(3) {
     margin-right: 10px;
-  }
-`;
-
-export const UserScroll = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 88%;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-button {
-    height: 0;
-  }
-  ::-webkit-scrollbar-track-piece {
-    background: #fafbfd;
-    border-radius: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #d7dbe7;
-    border-radius: 10px;
   }
 `;
 
