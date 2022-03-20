@@ -12,6 +12,8 @@ export const Logo = styled.div`
     flex-direction: row;
     align-items: center;
 
+    z-index: 19;
+
     .logo {
         width: 36px;
         height: 36px;
@@ -38,6 +40,8 @@ export const Wrappper = styled.div`
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+
+    overflow: auto;
 
     gap: 22px;
 `;

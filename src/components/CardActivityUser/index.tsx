@@ -12,13 +12,12 @@ import { ImFlag } from "react-icons/im"; // Flag Verde
 import { AiFillLock } from "react-icons/ai"; // Lock Bege
 import { BsBookmarkFill } from "react-icons/bs"; // Bookmark Verde
 
-export default function CardActivityUser({ userActivities, visibility }: any) {
-  var data = new Date();
-  var dia = String(data.getDate()).padStart(2, "0");
-  var mes = String(data.getMonth() + 1).padStart(2, "0");
-  var ano = data.getFullYear();
-  let dataAtual = ano + "-" + mes + "-" + dia;
-  console.log(dataAtual);
+interface CardActivityUserProps {
+  userActivities: any;
+  visibility: string;
+}
+
+export default function CardActivityUser({ userActivities, visibility }: CardActivityUserProps) {
 
   const RenderIcon = (activities: string) => {
     if (activities.indexOf("Received") !== -1) {
@@ -45,7 +44,8 @@ export default function CardActivityUser({ userActivities, visibility }: any) {
             <Activity>
               <div className="icons">{RenderIcon(activity.description)}</div>
               <div className="activities">
-                <p className="time">{activity.date}</p>
+                {/* <p className="time">{activity.date}</p> */}
+                <p className="time">{new Date(activity.date.substr(-2)).toLocaleString('en-us', {  weekday: 'long' })}</p>
                 <p className="content">{activity.description}</p>
               </div>
             </Activity>

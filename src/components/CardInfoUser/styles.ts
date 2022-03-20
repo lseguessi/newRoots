@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type ContainerProps = {
+  visible: string;
+}
+
+export const Container = styled.div.attrs((props: ContainerProps) => ({
+  display: props.visible,
+}))<ContainerProps>`
   max-width: 300px;
   max-height: 386px;
   width: 100%;
@@ -9,6 +15,14 @@ export const Container = styled.div`
   border-radius: 4px;
   z-index: 1;
   display: ${(props) => (props.visible === "show" ? "hidden" : "initial")};
+
+  @media screen and (max-width: 960px) {
+    margin-top: 5%;
+  }
+
+  @media screen and (max-width: 820px) {
+    margin-top: 15%;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -115,5 +129,67 @@ export const ScoreContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+  }
+`;
+
+export const LevelContainer = styled.div`
+  width: 276px;
+  height: 85px;
+
+  margin: -20px auto;
+  border-bottom: 1px solid #d7dbe7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .levels {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .first {
+      width: 11%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .row {
+      width: 120px;
+      background-color: #b5bac8;
+      border-radius: 8px;
+      height: 2px;
+      margin-top: 20px;
+    }
+
+    .disabled {
+      opacity: 0;
+    }
+
+    .last {
+      width: 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: #16325c;
+      }
+    }
   }
 `;

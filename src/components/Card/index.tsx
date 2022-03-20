@@ -1,9 +1,21 @@
 import React from "react";
-import { Container, TitleContainer, UsersContent } from "./styles";
+import { Container, TitleContainer } from "./styles";
 import ScrollContainer from 'react-indiana-drag-scroll'
+import User from "../User";
+interface ProfileProps {
+  id: string;
+  name: string;
+  image: string;
+  points: number;
+}
+interface CardProps {
+  profiles: Array<ProfileProps>
+  handleIdUser: Function;
+  loading: boolean;
+}
 
-export default function Card({ profiles, handleIdUser, loading }: any) {
-
+export default function Card({ profiles, handleIdUser, loading}: CardProps) {
+  
   const UsersSort = profiles.sort((a: any, b: any) => {
     return b.balance.points - a.balance.points;
   });
@@ -16,29 +28,10 @@ export default function Card({ profiles, handleIdUser, loading }: any) {
         <p>Points</p>
       </TitleContainer>
 
-      <ScrollContainer className="scroll-container" vertical hideScrollbars={false}>
+      <ScrollContainer className="scroll-container" vertical hideScrollbars={false} horizontal={false}>
         {UsersSort.map((profile: any, index: number) => {
           return (
-            <UsersContent
-              key={profile.id}
-              onClick={() => handleIdUser(profile.id)}
-            >
-              <p>{index + 1}</p>
-              <div>
-                <img
-                  src={
-                    profile.image === null
-                      ? "../../../images/user_null.png"
-                      : profile.image
-                  }
-                  alt="profile"
-                />
-                <p>
-                  {profile.name}{" "}
-                </p>
-              </div>
-              <p className="userPoints">{profile.balance.points}</p>
-            </UsersContent>
+            <User key={profile.id} profile={profile} index={index} handleIdUser={handleIdUser} loading={loading}/>
           );
         })}
       </ScrollContainer>

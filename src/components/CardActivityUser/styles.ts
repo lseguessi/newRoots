@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type ContainerProps = {
+  visible: string;
+}
+
+export const Container = styled.div.attrs((props: ContainerProps) => ({
+  display: props.visible,
+}))<ContainerProps>`
   max-width: 300px;
   max-height: 386px;
   width: 100%;
   height: 100%;
   background: #fff;
   z-index: 1;
-  display: ${(props) => (props.visible === "show" ? "hidden" : "initial")};
+  display: ${(props: any) => (props.visible === "show" ? "hidden" : "initial")};
 
   .scroll-container {
     width: 100%;
@@ -30,6 +36,11 @@ export const Container = styled.div`
       border-radius: 10px;
     }
   }
+  
+  @media screen and (max-width: 960px) {
+        margin-top: 5%;
+        margin-bottom: 25%;
+    }
 `;
 
 export const TitleContainer = styled.div`

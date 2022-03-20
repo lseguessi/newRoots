@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import backgroundImage from "../../../public/images/background.webp";
 import { Box } from "./styles";
 
 function getWindowsDimensions() {
