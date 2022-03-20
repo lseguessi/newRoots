@@ -54,6 +54,11 @@ export const UsersContent = styled.div<ContainerProps>`
     margin-right: 10px;
   }
 
+  span {
+    width: 10px;
+    margin-left: 10px;
+  }
+
   ${({ isSelected }: any) => isSelected === "true" ?  `background-color: #f0f8fc; border-radius: 8px` : ``}
   
   `;

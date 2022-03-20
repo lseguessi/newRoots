@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type ContainerProps = {
   visible: string;
-}
+};
 
 export const Container = styled.div.attrs((props: ContainerProps) => ({
   display: props.visible,
@@ -36,11 +36,10 @@ export const Container = styled.div.attrs((props: ContainerProps) => ({
       border-radius: 10px;
     }
   }
-  
-  @media screen and (max-width: 960px) {
-        margin-top: 5%;
-        margin-bottom: 25%;
-    }
+
+  @media screen and (min-width: 360px) and (max-width: 540px ) {
+    margin-bottom: 40%;
+  }
 `;
 
 export const TitleContainer = styled.div`

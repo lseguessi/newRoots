@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-import { Logo, Wrappper } from "./styles";
+import { Logo, Wrappper, MainContent } from "./styles";
 
 import Card from "../../components/Card";
 import CardInfoUser from "../../components/CardInfoUser";
@@ -49,15 +49,17 @@ export default function Home({ token, users }) {
           </div>
           <h2>New Roots</h2>
         </Logo>
-        <Card loading={loading} userId={userId} profiles={users} handleIdUser={handleIdUser} />
-        {visibility === "show" ? (
-          <>
-            <CardInfoUser profile={user} visibility={visibility} />
-            <CardActivityUser userActivities={user} visibility={visibility} />
-          </>
-        ) : (
-          <></>
-        )}
+        <MainContent userId={userId}>
+          <Card loading={loading} userId={userId} profiles={users} handleIdUser={handleIdUser} />
+          {visibility === "show" ? (
+            <>
+              <CardInfoUser profile={user} visibility={visibility} />
+              <CardActivityUser userActivities={user} visibility={visibility} />
+            </>
+          ) : (
+            <></>
+          )}
+        </MainContent>
       </Wrappper>
       <BgImage />
     </>

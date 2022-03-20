@@ -15,14 +15,6 @@ export const Container = styled.div.attrs((props: ContainerProps) => ({
   border-radius: 4px;
   z-index: 1;
   display: ${(props) => (props.visible === "show" ? "hidden" : "initial")};
-
-  @media screen and (max-width: 960px) {
-    margin-top: 5%;
-  }
-
-  @media screen and (max-width: 820px) {
-    margin-top: 15%;
-  }
 `;
 
 export const TitleContainer = styled.div`

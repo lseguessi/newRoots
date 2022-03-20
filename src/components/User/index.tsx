@@ -45,7 +45,7 @@ export default function User({
         />
         <p>{profile.name} </p>
         {loading && (
-          <span style={{ width: 10, marginLeft: 10 }}>
+          <span>
             <BallTriangle color="#00BFFF" height={12} width={12} />
           </span>
         )}
