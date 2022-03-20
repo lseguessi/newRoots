@@ -18,10 +18,19 @@ const BgImage = dynamic(() => import("../../components/BackgroundImage"), {
 
 export default function Home({ token, users }) {
   const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState<string>();
   const [loading, setLoading] = useState(false);
   const [visibility, setVisibility] = useState<string>("");
 
   async function handleIdUser(id: string) {
+
+    if (visibility === "show" && id === user.id) {
+      setVisibility("")
+      setUserId("");
+      return;
+    }
+
+    setUserId(id);
     setLoading(true);
     setUser(await getData(id, token));
     setVisibility("show");
@@ -40,7 +49,7 @@ export default function Home({ token, users }) {
           </div>
           <h2>New Roots</h2>
         </Logo>
-        <Card loading={loading} profiles={users} handleIdUser={handleIdUser} />
+        <Card loading={loading} userId={userId} profiles={users} handleIdUser={handleIdUser} />
         {visibility === "show" ? (
           <>
             <CardInfoUser profile={user} visibility={visibility} />

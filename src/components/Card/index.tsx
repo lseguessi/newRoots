@@ -11,10 +11,11 @@ interface ProfileProps {
 interface CardProps {
   profiles: Array<ProfileProps>
   handleIdUser: Function;
+  userId: string;
   loading: boolean;
 }
 
-export default function Card({ profiles, handleIdUser, loading}: CardProps) {
+export default function Card({ profiles, handleIdUser, loading, userId}: CardProps) {
   
   const UsersSort = profiles.sort((a: any, b: any) => {
     return b.balance.points - a.balance.points;
@@ -31,7 +32,7 @@ export default function Card({ profiles, handleIdUser, loading}: CardProps) {
       <ScrollContainer className="scroll-container" vertical hideScrollbars={false} horizontal={false}>
         {UsersSort.map((profile: any, index: number) => {
           return (
-            <User key={profile.id} profile={profile} index={index} handleIdUser={handleIdUser} loading={loading}/>
+            <User key={profile.id} userId={userId} profile={profile} index={index} handleIdUser={handleIdUser} loading={loading}/>
           );
         })}
       </ScrollContainer>

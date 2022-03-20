@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const UsersContent = styled.div`
+interface ContainerProps {
+  isSelected: string;
+}
+
+export const UsersContent = styled.div<ContainerProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,20 +17,21 @@ export const UsersContent = styled.div`
     background-color: #f0f8fc;
     border-radius: 8px;
   }
-
+  
+  
   p {
     font-size: 13px;
     color: #16325c;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
-
+  
   p:nth-child(1) {
     margin-left: 6px;
     margin-right: 6px;
     width: 22px;
     text-align: center;
   }
-
+  
   div {
     width: 185px;
     height: 24px;
@@ -34,7 +39,7 @@ export const UsersContent = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-
+    
     img {
       width: 24px;
       height: 24px;
@@ -42,11 +47,13 @@ export const UsersContent = styled.div`
       margin-right: 8px;
     }
   }
-
+  
   .userPoints {
     width: 30px;
     text-align: right;
     margin-right: 10px;
   }
 
-`;
+  ${({ isSelected }: any) => isSelected === "true" ?  `background-color: #f0f8fc; border-radius: 8px` : ``}
+  
+  `;
